@@ -54,13 +54,20 @@ app.prepare().then(() => {
 	server.use(
 		'/graphql',
 		bodyParser.json(),
-		graphqlExpress(req => ({
-			schema,
-			context: req
-		}))
+		graphqlExpress(req => {
+			let context = {
+				login: req.login.bind(req),
+				user: req.user
+			}
+
+			return {
+				schema,
+				context
+			}
+		})
 	)
 
-	server.get(
+	server.use(
 		'/graphiql',
 		graphiqlExpress({
 			endpointURL: '/graphql'

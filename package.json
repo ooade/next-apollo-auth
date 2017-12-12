@@ -9,7 +9,7 @@
 		"start": "NODE_ENV=production node server"
 	},
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"apollo-client-preset": "^1.0.5",
 		"apollo-server-express": "^1.2.0",

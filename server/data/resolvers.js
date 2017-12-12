@@ -13,7 +13,7 @@ module.exports = {
 		}
 	},
 	Mutation: {
-		signup(root, { email, fullname, password }, ctx) {
+		signup(root, { email, fullname, password }, { login }) {
 			const user = new User({ email, fullname })
 
 			return new Promise((resolve, reject) => {
@@ -21,17 +21,17 @@ module.exports = {
 					if (err) {
 						reject(err)
 					} else {
-						ctx.login(user, () => resolve(user))
+						login(user, () => resolve(user))
 					}
 				})
 			})
 		},
-		login(root, { email, password }, ctx) {
+		login(root, { email, password }, { login }) {
 			return new Promise((resolve, reject) => {
 				return User.authenticate()(email, password, (err, user) => {
 					// user returns false if username / email incorrect
 					if (user) {
-						ctx.login(user, () => resolve(user))
+						login(user, () => resolve(user))
 					} else {
 						reject('Email / Password Incorrect')
 					}
