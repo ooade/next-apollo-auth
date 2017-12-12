@@ -133,7 +133,7 @@ userSchema.plugin(passportLocalMongoose, {
 
 ### Deploy
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/ooade/NextSimpleStarter)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/ooade/next-auth-apollo)
 
 ### License
 
