@@ -63,7 +63,7 @@ type Query {
 }
 
 type Mutation {
-	signup(email: String!, fullname: String, password: String!): User
+	createUser(email: String!, fullname: String, password: String!): User
 	login(email: String!, password: String!): User
 }
 ```
@@ -74,7 +74,7 @@ The resolvers we care about here are `createUser` and `login`. They both take in
 
 ```js
 Mutation: {
-		signup(root, { email, fullname, password }, { login }) {
+		createUser(root, { email, fullname, password }, { login }) {
 			const user = new User({ email, fullname })
 
 			return new Promise((resolve, reject) => {
