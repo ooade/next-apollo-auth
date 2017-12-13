@@ -13,6 +13,7 @@ const typeDefs = `
 	type Mutation {
 		signup(email: String!, fullname: String, password: String!): User
 		login(email: String!, password: String!): User
+		authGithub: User
 	}
 `
 

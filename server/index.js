@@ -54,8 +54,12 @@ app.prepare().then(() => {
 	server.use(
 		'/graphql',
 		bodyParser.json(),
-		graphqlExpress(req => {
+		graphqlExpress((req, res) => {
 			let context = {
+				statusCode: res.statusCode,
+				setHeader: res.setHeader.bind(res),
+				end: res.end.bind(res),
+				res: res,
 				login: req.login.bind(req),
 				user: req.user
 			}
@@ -72,6 +76,17 @@ app.prepare().then(() => {
 		graphiqlExpress({
 			endpointURL: '/graphql'
 		})
+	)
+
+	server.get('/auth/github', passport.authenticate('github'))
+
+	server.get(
+		'/auth/github/callback',
+		passport.authenticate('github', { failureRedirect: '/login' }),
+		function(req, res) {
+			// Successful authentication, redirect home.
+			res.redirect('/')
+		}
 	)
 
 	server.get('*', (req, res) => {
