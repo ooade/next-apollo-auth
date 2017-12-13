@@ -13,7 +13,7 @@ module.exports = {
 		}
 	},
 	Mutation: {
-		signup(root, { email, fullname, password }, { login }) {
+		createUser(root, { email, fullname, password }, { login }) {
 			const user = new User({ email, fullname })
 
 			return new Promise((resolve, reject) => {

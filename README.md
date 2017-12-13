@@ -70,11 +70,11 @@ type Mutation {
 
 #### Resolvers
 
-The resolvers we care about here are `signup` and `login`. They both take in `email` and `password` as arguments with signup taking an extra `fullname` argument. `ctx` is passed the `Request Object` from the server setup, so we could use `passport-local-mongoose`'s `login` method to auth users.
+The resolvers we care about here are `createUser` and `login`. They both take in `email` and `password` as arguments with `createUser` taking an extra `fullname` argument.
 
 ```js
 Mutation: {
-		signup(root, { email, fullname, password }, ctx) {
+		signup(root, { email, fullname, password }, { login }) {
 			const user = new User({ email, fullname })
 
 			return new Promise((resolve, reject) => {
@@ -82,17 +82,17 @@ Mutation: {
 					if (err) {
 						reject(err)
 					} else {
-						ctx.login(user, () => resolve(user))
+						login(user, () => resolve(user))
 					}
 				})
 			})
 		},
-		login(root, { email, password }, ctx) {
+		login(root, { email, password }, { login }) {
 			return new Promise((resolve, reject) => {
 				return User.authenticate()(email, password, (err, user) => {
 					// user returns false if username / email incorrect
 					if (user) {
-						ctx.login(user, () => resolve(user))
+						login(user, () => resolve(user))
 					} else {
 						reject('Email / Password Incorrect')
 					}
@@ -133,7 +133,7 @@ userSchema.plugin(passportLocalMongoose, {
 
 ### Deploy
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/ooade/next-auth-apollo)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/ooade/next-apollo-auth)
 
 ### License
 

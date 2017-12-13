@@ -119,8 +119,8 @@ class signup extends React.Component {
 }
 
 const mutator = gql`
-	mutation signup($email: String!, $fullname: String, $password: String!) {
-		signup(email: $email, fullname: $fullname, password: $password) {
+	mutation createUser($email: String!, $fullname: String, $password: String!) {
+		createUser(email: $email, fullname: $fullname, password: $password) {
 			email
 		}
 	}

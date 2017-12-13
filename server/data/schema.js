@@ -11,7 +11,7 @@ const typeDefs = `
 		profile: User
 	}
 	type Mutation {
-		signup(email: String!, fullname: String, password: String!): User
+		createUser(email: String!, fullname: String, password: String!): User
 		login(email: String!, password: String!): User
 	}
 `
