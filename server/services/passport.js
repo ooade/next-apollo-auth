@@ -9,8 +9,6 @@ const findOneAndUpdateAsync = promisify(User.findOneAndUpdate.bind(User))
 
 const GitHubStrategy = require('passport-github').Strategy
 
-console.log(process.env)
-
 passport.use(
 	new GitHubStrategy(
 		{
