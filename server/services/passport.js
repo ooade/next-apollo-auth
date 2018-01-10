@@ -2,6 +2,10 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 
 const User = require('../models/User')
+const { promisify } = require('util')
+
+const findOneAsync = promisify(User.findOne.bind(User))
+const findOneAndUpdateAsync = promisify(User.findOneAndUpdate.bind(User))
 
 const GitHubStrategy = require('passport-github').Strategy
 
@@ -13,17 +17,30 @@ passport.use(
 			callbackURL: 'http://localhost:3000/auth/github/callback'
 		},
 		function(accessToken, refreshToken, profile, cb) {
-			// console.log(profile)
-			User.find({ email: profile.emails[0].value }, function(err, u) {
-				let data = {
-					fullname: profile.displayName,
-					email: profile.emails[0].value
-				}
+			const { email, name } = profile._json
 
-				if (!u.length) {
-					User.create(data).then(user => cb(err, user))
-				}
-			})
+			// Auto-link account
+			findOneAsync({ email })
+				.then(u => {
+					if (!u) {
+						let data = {
+							email,
+							fullname: name,
+							providers: ['github']
+						}
+
+						User.create(data).then(user => cb(null, user))
+					} else {
+						// Update Provider to DB if not added
+						findOneAndUpdateAsync(
+							{ email, providers: { $ne: 'github' } },
+							{ $push: { providers: 'github' } }
+						)
+
+						return cb(null, u)
+					}
+				})
+				.catch(err => cb(err))
 		}
 	)
 )

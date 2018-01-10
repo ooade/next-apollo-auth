@@ -56,10 +56,6 @@ app.prepare().then(() => {
 		bodyParser.json(),
 		graphqlExpress((req, res) => {
 			let context = {
-				statusCode: res.statusCode,
-				setHeader: res.setHeader.bind(res),
-				end: res.end.bind(res),
-				res: res,
 				login: req.login.bind(req),
 				user: req.user
 			}
