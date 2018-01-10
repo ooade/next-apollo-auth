@@ -19,7 +19,8 @@ const userSchema = new Schema({
 		},
 		required: 'Please Supply an email address'
 	},
-	fullname: String
+	fullname: String,
+	providers: Array
 })
 
 userSchema.plugin(passportLocalMongoose, {

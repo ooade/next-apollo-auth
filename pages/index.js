@@ -33,6 +33,8 @@ const Index = ({ serverState: { user } }) => {
 				<a>Signup</a>
 			</Link>{' '}
 			to view hidden resources
+			<br /> <br />
+			<a href="/auth/github">Auth With GitHub</a>
 		</p>
 	)
 }

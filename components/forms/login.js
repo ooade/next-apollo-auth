@@ -43,8 +43,8 @@ class login extends React.Component {
 	}
 
 	render() {
-		return (
-			<form onSubmit={this.onFormSubmit}>
+		return [
+			<form onSubmit={this.onFormSubmit} key="form">
 				<div>
 					<span className="error">{this.state.error}</span>
 					<label> Email Address </label>
@@ -63,7 +63,7 @@ class login extends React.Component {
 					/>
 				</div>
 				<div>
-					<button> Log In </button>
+					<button type="submit"> Log In </button>
 				</div>
 				<style jsx>
 					{`
@@ -102,8 +102,12 @@ class login extends React.Component {
 						}
 					`}
 				</style>
-			</form>
-		)
+			</form>,
+			<a key="btn" href="/auth/github">
+				{' '}
+				Auth With GitHub{' '}
+			</a>
+		]
 	}
 }
 
