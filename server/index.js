@@ -9,6 +9,8 @@ const expressValidator = require('express-validator')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const next = require('next')
 
+require('dotenv').config()
+
 const schema = require('./data/schema')
 require('./services/passport')
 
@@ -79,7 +81,7 @@ app.prepare().then(() => {
 	server.get(
 		'/auth/github/callback',
 		passport.authenticate('github', { failureRedirect: '/login' }),
-		function(req, res) {
+		(req, res) => {
 			// Successful authentication, redirect home.
 			res.redirect('/')
 		}

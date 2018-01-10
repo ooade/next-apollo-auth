@@ -9,14 +9,16 @@ const findOneAndUpdateAsync = promisify(User.findOneAndUpdate.bind(User))
 
 const GitHubStrategy = require('passport-github').Strategy
 
+console.log(process.env)
+
 passport.use(
 	new GitHubStrategy(
 		{
-			clientID: 'e18a059ecc33ba681d0f',
-			clientSecret: '7860723013424dccc22c85f4c8f6f3d367c26029',
-			callbackURL: 'http://localhost:3000/auth/github/callback'
+			clientID: process.env.GithubClientID,
+			clientSecret: process.env.GithubClientSecret,
+			callbackURL: process.env.GithubCallbackURL
 		},
-		function(accessToken, refreshToken, profile, cb) {
+		(accessToken, refreshToken, profile, cb) => {
 			const { email, name } = profile._json
 
 			// Auto-link account
