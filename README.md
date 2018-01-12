@@ -10,6 +10,7 @@ This example shows how to implement Authentication with Next.js and Apollo Graph
 * Next.js
 * Passport.js
 * Passport-local-mongoose
+* Passport-github
 
 ## Contents
 
