@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 
 import withData from '../lib/withData'
 
@@ -17,6 +15,11 @@ const Index = ({ serverState: { user } }) => {
 					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
 					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 					culpa qui officia deserunt mollit anim id est laborum.
+					<br />
+					<br />
+					<a href="/connect/github">Link Account With GitHub</a>
+					<br />
+					<a href="/profile">Go to Profile</a>
 				</div>
 			</div>
 		)

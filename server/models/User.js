@@ -20,7 +20,11 @@ const userSchema = new Schema({
 		required: 'Please Supply an email address'
 	},
 	fullname: String,
-	providers: Array
+	github: {
+		id: String,
+		name: String,
+		email: String
+	}
 })
 
 userSchema.plugin(passportLocalMongoose, {

@@ -76,16 +76,7 @@ app.prepare().then(() => {
 		})
 	)
 
-	server.get('/auth/github', passport.authenticate('github'))
-
-	server.get(
-		'/auth/github/callback',
-		passport.authenticate('github', { failureRedirect: '/login' }),
-		(req, res) => {
-			// Successful authentication, redirect home.
-			res.redirect('/')
-		}
-	)
+	require('./routes')(server, passport)
 
 	server.get('*', (req, res) => {
 		return handle(req, res)

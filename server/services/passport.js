@@ -10,35 +10,46 @@ passport.use(
 		{
 			clientID: process.env.GithubClientID,
 			clientSecret: process.env.GithubClientSecret,
-			callbackURL: process.env.GithubCallbackURL
+			callbackURL: process.env.GithubCallbackURL,
+			passReqToCallback: true
 		},
-		(accessToken, refreshToken, profile, cb) => {
-			const { email, name } = profile._json
+		(req, accessToken, refreshToken, profile, cb) => {
+			const { email, name, id } = profile._json
 
-			// Auto-link account
+			// Check if user is auth'd
+			if (req.user) {
+				let user = req.user
 
-			User.findOne({ email })
-				.then(user => {
+				user.github.id = id
+				user.github.email = email
+				user.github.name = name
+
+				user
+					.save()
+					.then(user => cb(null, user, { nextRoute: '/profile' }))
+					.catch(err => cb(err))
+			} else {
+				User.findOne({ 'github.id': id }).then(user => {
 					if (!user) {
-						let data = {
-							email,
-							fullname: name,
-							providers: ['github']
-						}
+						// User is not auth, and not found on db? create an account
+						let newUser = new User()
 
-						User.create(data).then(user => cb(null, user))
+						newUser.email = email
+						newUser.github.id = id
+						newUser.github.email = email
+						newUser.github.name = name
+
+						newUser
+							.save()
+							.then(user => cb(null, user))
+							.catch(err => cb(err))
 					} else {
-						// Update Provider to DB if not added
-
-						User.findOneAndUpdate(
-							{ email, providers: { $ne: 'github' } },
-							{ $push: { providers: 'github' } }
-						).exec()
-
+						// user not auth'd but provider account found? log 'em in
+						// maybe update the profile here?
 						return cb(null, user)
 					}
 				})
-				.catch(err => cb(err))
+			}
 		}
 	)
 )
