@@ -2,6 +2,8 @@
 
 This example shows how to implement Authentication with Next.js and Apollo GraphQL.
 
+* Supports [Account Linking](https://medium.com/@ba31d6be06df/2cb1b09d4a76)
+
 ## Main Technologies Used
 
 * Apollo GraphQl
