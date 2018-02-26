@@ -5,7 +5,6 @@ const typeDefs = `
 	type User {
 		email: String
 		fullname: String
-		password: String
 		github: GitHub
 	}
 	type GitHub {

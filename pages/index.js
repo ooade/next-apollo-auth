@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { withApollo, compose } from 'react-apollo'
 
 import withData from '../lib/withData'
 import checkLoggedIn from '../lib/checkLoggedIn'
@@ -59,9 +58,4 @@ class Index extends React.Component {
 	}
 }
 
-export default compose(
-	// withData gives us server-side graphql queries before rendering
-	withData,
-	// withApollo exposes `this.props.client` used when logging out
-	withApollo
-)(Index)
+export default withData(Index)

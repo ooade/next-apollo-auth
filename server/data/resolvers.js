@@ -40,7 +40,6 @@ module.exports = {
 			})
 		},
 		authGithub(root, args, { statusCode, setHeader, res }) {
-			// res.send('/moloe')
 			return new Promise((resolve, reject) => {
 				return passport.authenticate('github', (err, user) => {
 					if (user) {
