@@ -14,9 +14,7 @@ require('dotenv').config()
 const schema = require('./data/schema')
 require('./services/passport')
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/auth', {
-	useMongoClient: true
-})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/auth')
 
 const port = process.env.PORT || 3000
 
