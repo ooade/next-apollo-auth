@@ -12,6 +12,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"apollo-client-preset": "^1.0.5",
+		"apollo-link-context": "^1.0.7",
 		"apollo-server-express": "^1.2.0",
 		"body-parser": "^1.18.2",
 		"connect-mongo": "^2.0.0",

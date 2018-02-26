@@ -3,10 +3,10 @@ const passport = require('passport')
 
 module.exports = {
 	Query: {
-		profile(root, args, { user }) {
+		profile(root, args, req) {
 			return new Promise((resolve, reject) => {
-				if (user) {
-					return resolve(user)
+				if (req.user) {
+					return resolve(req.user)
 				}
 
 				return reject('Not Authenticated!')

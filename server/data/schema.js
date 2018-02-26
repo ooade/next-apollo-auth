@@ -6,6 +6,12 @@ const typeDefs = `
 		email: String
 		fullname: String
 		password: String
+		github: GitHub
+	}
+	type GitHub {
+		id: Int,
+		name: String,
+		email: String
 	}
 	type Query {
 		profile: User
