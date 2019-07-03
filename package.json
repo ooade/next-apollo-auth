@@ -1,42 +1,46 @@
 {
-	"name": "next-auth-apollo",
-	"version": "0.1.0",
-	"description": "Authentication Example with Next.js and Apollo GraphQL",
-	"main": "index.js",
-	"scripts": {
-		"dev": "nodemon --watch data --watch server server",
-		"build": "next build",
-		"start": "NODE_ENV=production node server"
-	},
-	"author": "",
-	"license": "MIT",
-	"dependencies": {
-		"apollo-client-preset": "^1.0.5",
-		"apollo-link-context": "^1.0.7",
-		"apollo-server-express": "^1.2.0",
-		"body-parser": "^1.18.2",
-		"connect-mongo": "^2.0.0",
-		"cookie-parser": "^1.4.3",
-		"dotenv": "^4.0.0",
-		"express": "^4.16.2",
-		"express-session": "^1.15.6",
-		"express-validator": "^6.0.0",
-		"graphql": "^0.11.7",
-		"graphql-tag": "^2.6.0",
-		"graphql-tools": "^2.12.0",
-		"isomorphic-fetch": "^2.2.1",
-		"isomorphic-unfetch": "^2.0.0",
-		"mongoose": "^5.4.14",
-		"mongoose-mongodb-errors": "0.0.2",
-		"next": "^7.0.2",
-		"passport": "^0.4.0",
-		"passport-github": "^1.1.0",
-		"passport-local-mongoose": "^4.4.0",
-		"react": "^16.7.0",
-		"react-apollo": "^2.0.4",
-		"react-dom": "^16.7.0"
-	},
-	"devDependencies": {
-		"nodemon": "^1.18.9"
-	}
+  "name": "next-auth-apollo",
+  "version": "0.1.0",
+  "description": "Authentication Example with Next.js and Apollo GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch data --watch server server",
+    "build": "next build",
+    "start": "NODE_ENV=production node server",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-client-preset": "^1.0.5",
+    "apollo-link-context": "^1.0.7",
+    "apollo-server-express": "^1.2.0",
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "express-validator": "^6.0.0",
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.6.0",
+    "graphql-tools": "^2.12.0",
+    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-unfetch": "^2.0.0",
+    "mongoose": "^5.4.14",
+    "mongoose-mongodb-errors": "0.0.2",
+    "next": "^7.0.2",
+    "passport": "^0.4.0",
+    "passport-github": "^1.1.0",
+    "passport-local-mongoose": "^4.4.0",
+    "react": "^16.7.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.7.0",
+    "snyk": "^1.189.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "snyk": true
 }
