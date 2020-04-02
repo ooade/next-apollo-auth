@@ -6,3 +6,11 @@ patch:
   SNYK-JS-LODASH-450202:
     - next > babel-plugin-transform-define > lodash:
         patched: '2020-03-31T20:31:24.325Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2020-04-02T06:50:10.751Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > lodash:
+        patched: '2020-04-02T06:50:10.751Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2020-04-02T06:50:10.751Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > lodash:
+        patched: '2020-04-02T06:50:10.751Z'
