@@ -30,7 +30,7 @@
     "isomorphic-unfetch": "^2.1.0",
     "mongoose": "^5.12.3",
     "mongoose-mongodb-errors": "0.0.2",
-    "next": "^10.0.7",
+    "next": "^10.2.0",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "passport-local-mongoose": "^4.4.0",
