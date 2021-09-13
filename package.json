@@ -37,7 +37,7 @@
     "react": "^16.7.0",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.7.0",
-    "snyk": "^1.667.0"
+    "snyk": "^1.685.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
