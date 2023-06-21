@@ -33,7 +33,7 @@
     "next": "^12.1.0",
     "passport": "^0.6.0",
     "passport-github": "^1.1.0",
-    "passport-local-mongoose": "^4.4.0",
+    "passport-local-mongoose": "^6.0.0",
     "react": "^16.7.0",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.7.0",
