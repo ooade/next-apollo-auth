@@ -28,7 +28,7 @@
     "graphql-tools": "^2.12.0",
     "isomorphic-fetch": "^3.0.0",
     "isomorphic-unfetch": "^2.1.0",
-    "mongoose": "^6.11.3",
+    "mongoose": "^6.12.0",
     "mongoose-mongodb-errors": "0.0.2",
     "next": "^12.1.0",
     "passport": "^0.6.0",
